@@ -11,6 +11,9 @@ var Mackerel = (function(win, undefined){
     if(poisioned) setTimeout(inflictPoison, 500); 
     reduceHealth(1);
   }
+  function increaseHealth(hlth){
+    health += hlth;
+  }
   // Public properties and methods
   var Mackerel = {
     isFish: function(){
@@ -48,7 +51,10 @@ var Mackerel = (function(win, undefined){
       return false;
     },
     eat: function(parameters) {
-      if(eats.indexOf(parameters)!=-1) return "Mackerel ate "+parameters;
+      if(eats.indexOf(parameters)!=-1){
+        if(health<95){
+          increaseHealth(5)}
+        return "Mackerel ate "+parameters}
       return "Mackeral does not eat "+parameters;
     }
   };
